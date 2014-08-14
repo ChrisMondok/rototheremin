@@ -67,13 +67,14 @@ function setUpListeners() {
 	document.getElementById("gain-input").addEventListener("change", gainInputListener);
 
 	var started = false;
-	document.getElementById("canvas-container").addEventListener("touchstart", function() {
+	document.getElementById("canvas-container").addEventListener("touchstart", function(e) {
 		if(!started) {
 			started = true;
-			oscillator.start();
+			oscillator.start(0);
 		}
 		gainNode.gain.value = gain;
 		isPlaying = true;
+		e.preventDefault();
 	});
 
 	document.getElementById("canvas-container").addEventListener("touchend", function() {
