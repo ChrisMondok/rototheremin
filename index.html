@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>rototheremin</title>
+	<script src="script.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<meta name="viewport" content="height=device-height, width=device-width, user-scalable=no"/>
+</head>
+	<body>
+		<section id="controls">
+			<label>
+				Gain
+				<input id="gain-input" type="range" min="0" max="1" value="0.5" step="any"/>
+			</label>
+			<label>
+				Waveform
+				<select id="waveform-select">
+					<option>sine</option>
+					<option>triangle</option>
+					<option>sawtooth</option>
+					<option>square</option>
+				</select>
+			</label>
+		</section>
+		<section id="canvas-container">
+			<canvas id="freq-canvas" width="1024" height="255"></canvas>
+			<canvas id="time-canvas" width="1024" height="255"></canvas>
+		</section>
+	</body>
+</html>
