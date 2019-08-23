@@ -1,6 +1,7 @@
 var context, oscillator, gainNode, analyzer;
 
 function init() {
+	document.getElementById('instructions').remove();
 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 	context = new window.AudioContext();
@@ -57,7 +58,7 @@ function setUpListeners() {
 	var gain = 0.5;
 	var isPlaying = false;
 
-	gainInputListener = function(e) {
+	function gainInputListener(e) {
 		gain = Number(e.target.value);
 		if(isPlaying)
 			gainNode.gain.value = gain;
@@ -86,12 +87,10 @@ function setUpListeners() {
 		oscillator.type = e.target.value;
 	});
 
-	window.addEventListener("deviceorientation", orientationListener);
+	window.addEventListener("deviceorientation", orientationListener, true);
 }
 
 function orientationListener(e) {
 	var pct = Math.min(Math.max(0, e.beta / 180), 1);
 	oscillator.frequency.value = pct * 3000;
 }
-
-window.addEventListener("load", init);
